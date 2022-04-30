@@ -1,0 +1,7 @@
+name: GameMode
+version: '${project.version}'
+main: eu.baumistlustig.gamemode.GameMode
+api-version: 1.18
+authors: [ Baumistlustig ]
+description: A Minecraft Spigot Gamemode
+website: https://www.baumistlustig.eu/

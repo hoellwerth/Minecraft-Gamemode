@@ -1,4 +1,37 @@
 package eu.baumistlustig.gamemode.commands;
 
-public class StartMenuCommand {
+import eu.baumistlustig.gamemode.utils.ItemBuilder;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+
+public class StartMenuCommand implements CommandExecutor {
+
+    public void giveStartMenuItem(Player p) {
+        if ((p.isOp() || p.hasPermission("*")) && !(p.getInventory().contains(Material.CLOCK))) {
+            if (p.getInventory().getItem(40) == null) {
+                p.getInventory().setItem(40, new ItemBuilder(Material.CLOCK)
+                        .setDisplayname(ChatColor.GREEN.toString() + ChatColor.BOLD + "Startmenü")
+                        .setLore(ChatColor.GRAY + "Öffnet das Startmenü zum Starten und Verwalten der Runde.")
+                        .setLocalizedName("startmenu")
+                        .build());
+
+            } else {
+                p.getInventory().addItem(new ItemBuilder(Material.CLOCK)
+                        .setDisplayname(ChatColor.GREEN.toString() + ChatColor.BOLD + "Startmenü")
+                        .setLore(ChatColor.GRAY + "Öffnet das Startmenü zum Starten und Verwalten der Runde.")
+                        .setLocalizedName("startmenu")
+                        .build());
+            }
+        }
+    }
+    @Override
+    public boolean onCommand(@NotNull CommandSender s, @NotNull Command smd, @NotNull String label, @NotNull String[] args) {
+        giveStartMenuItem((Player) s);
+        return false;
+    }
 }

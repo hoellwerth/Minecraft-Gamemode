@@ -1,0 +1,10 @@
+name: Gamemode
+version: '${project.version}'
+main: eu.baumistlustig.gamemode.Gamemode
+api-version: 1.19
+authors: [ Baumistlustig ]
+description: A template for a minecraft gamemode.
+
+commands:
+  start:
+    permission: gamemode.start

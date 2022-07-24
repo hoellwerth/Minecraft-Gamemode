@@ -8,3 +8,6 @@ description: A template for a minecraft gamemode.
 commands:
   start:
     permission: gamemode.start
+
+  timer:
+    permission: gamemode.timer

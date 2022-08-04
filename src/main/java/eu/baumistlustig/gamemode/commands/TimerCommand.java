@@ -28,7 +28,7 @@ public class TimerCommand implements CommandExecutor {
                 }
 
                 timer.setRunning(false);
-                sender.sendMessage(ChatColor.GRAY + "Timer hass been " + ChatColor.GREEN + "paused" + ChatColor.GRAY + "!");
+                sender.sendMessage(ChatColor.GRAY + "Timer has been " + ChatColor.GREEN + "paused" + ChatColor.GRAY + "!");
                 break;
             }
             case "resume": {

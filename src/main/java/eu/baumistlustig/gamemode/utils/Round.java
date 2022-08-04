@@ -11,15 +11,21 @@ public class Round {
         Timer timer = Gamemode.getPlugin().getTimer();
         if (!timer.isRunning()) { return; }
 
+        int flag = 0;
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             if (onlinePlayer.getGameMode() == GameMode.CREATIVE || onlinePlayer.getGameMode() == GameMode.SPECTATOR) {
-                return;
+                continue;
             }
 
+            flag++;
+        }
+
+        if (flag == 1) {
             timer.setRunning(false);
-            p.sendTitle(ChatColor.GREEN.toString() + ChatColor.BOLD + "Game Over!",
-                    ChatColor.GREEN + "" + onlinePlayer.name() + ChatColor.GRAY + " has eliminated every other player and won!"
-            );
+            Bukkit.broadcastMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "GAME" + ChatColor.GRAY + "]" + ChatColor.GREEN + " Game Over!");
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.sendTitle(ChatColor.GREEN.toString() + ChatColor.BOLD + "Game Over!", ChatColor.GRAY + "The round is over!");
+            }
         }
     }
 }

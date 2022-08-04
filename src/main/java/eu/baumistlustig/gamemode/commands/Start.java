@@ -4,6 +4,7 @@ import eu.baumistlustig.gamemode.Gamemode;
 import eu.baumistlustig.gamemode.utils.Timer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,6 +18,21 @@ public class Start implements CommandExecutor {
     private int time;
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
+        int flag = 0;
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) {
+                continue;
+            }
+
+            flag++;
+        }
+
+        if (flag < 2) {
+            sender.sendMessage(ChatColor.RED + "Cannot start Game! " + ChatColor.GRAY + "There are less than 2 players in survival!");
+            return false;
+        }
+
         time = 15;
 
         BukkitRunnable runnable = new BukkitRunnable() {

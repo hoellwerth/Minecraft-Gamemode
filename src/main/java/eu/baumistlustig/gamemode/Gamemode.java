@@ -6,6 +6,7 @@ import eu.baumistlustig.gamemode.events.RoundEvents;
 import eu.baumistlustig.gamemode.utils.Round;
 import eu.baumistlustig.gamemode.utils.Timer;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -39,7 +40,7 @@ public final class Gamemode extends JavaPlugin {
         pluginManager.registerEvents(new RoundEvents(), this);
 
         // Init Message
-        Bukkit.getLogger().info("§a Gamemode Template Plugin has been loaded");
+        Bukkit.getLogger().info(ChatColor.GREEN + "Gamemode Template Plugin has been loaded");
     }
 
     @Override
